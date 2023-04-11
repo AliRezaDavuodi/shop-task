@@ -1,7 +1,8 @@
 import React from "react";
+import Routes from "../routes";
 
 function App() {
-  return <div className="bg-red-600">let's start</div>;
+  return <Routes />;
 }
 
 export default App;

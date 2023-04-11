@@ -7,13 +7,15 @@ import {
 } from "react-router-dom";
 import { Root } from "./Root";
 
+import { Routes as allRoutes } from "./routes";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
-      {/* {allRoutes.map((route) => (
+      {allRoutes.map((route) => (
         // TODO: check for the private or public
         <Route {...route} element={<route.component />} key={route.path} />
-      ))} */}
+      ))}
     </Route>
   )
 );
