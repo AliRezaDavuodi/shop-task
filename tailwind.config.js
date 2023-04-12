@@ -4,7 +4,10 @@ module.exports = {
     extend: {
       colors: {
         blackish: "#131822",
+        lighterBlackish: "#131822b3",
         grayish: "#D8DADC",
+        darkerGray: "#BDBDBD",
+        white: "#ffffff",
       },
 
       spacing: {
@@ -59,6 +62,7 @@ module.exports = {
       },
       minWidth: {
         10: "2.5rem",
+        28: "7rem",
         48: "12rem",
         56: "14rem",
         120: "30rem",
@@ -84,11 +88,16 @@ module.exports = {
       },
       animation: {
         float: "float 3s ease-in-out infinite",
+        up: "up 1s ease-in-out",
       },
       keyframes: {
         float: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-5%)" },
+        },
+        up: {
+          "0%": { bottom: "-100%" },
+          "50%": { bottom: "0" },
         },
       },
       zIndex: {
