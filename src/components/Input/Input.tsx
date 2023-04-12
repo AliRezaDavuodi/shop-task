@@ -27,7 +27,9 @@ const Input: FC<InputProps> = (props) => {
     <div className={`flex flex-col mt-6 ${extraContainerClass}`}>
       <label
         htmlFor={name}
-        className={`font-medium text-blackish select-none ${extraLabelClass}`}
+        className={`text-blackish font-medium select-none duration-150 ${extraLabelClass} ${
+          focused ? "ml-2" : " "
+        }`}
       >
         {label}
       </label>

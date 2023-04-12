@@ -6,7 +6,7 @@ const Button: FC<ButtonProps> = (props) => {
 
   return (
     <button
-      className={`bg-blackish w-full font-semibold text-white rounded-[10px] p-4 duration-150 hover:scale-105 hover:shadow select-none  ${extraBtnClass}`}
+      className={`bg-blackish w-full font-semibold text-white rounded-[10px] p-4 duration-150 hover:scale-101 hover:shadow select-none hover:opacity-90 ${extraBtnClass}`}
     >
       {subject}
     </button>
