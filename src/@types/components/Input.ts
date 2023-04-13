@@ -1,5 +1,5 @@
 export interface InputProps {
-  label: string;
+  label?: string;
   type: string;
   name: string;
   id: string;
@@ -8,4 +8,5 @@ export interface InputProps {
   extraLabelClass?: string;
   extraContainerClass?: string;
   children?: React.ReactElement;
+  extraInputContainerClass?: string;
 }
