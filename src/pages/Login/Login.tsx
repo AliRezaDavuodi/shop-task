@@ -3,11 +3,22 @@ import Input from "../../components/Input/Input";
 import { Link } from "react-router-dom";
 import Button from "../../components/Buttons/Button";
 import OpenEyeIcon from "../../assets/icons/OpenEye";
+import { login } from "../../service/auth.service";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
 
   const showPassHandler = () => setShowPass((pre) => !pre);
+
+  const loginUserHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const data = await login("kminchelle", "0lelplR");
+      console.log({ data });
+    } catch (error) {
+      console.log({ error });
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-screen gap-2 p-6 bg-white">
@@ -18,7 +29,7 @@ const Login = () => {
         Please enter your username and password
       </p>
 
-      <form action="" className="w-full">
+      <form action="" className="w-full" onSubmit={loginUserHandler}>
         <Input
           label="Email address"
           name="email"
