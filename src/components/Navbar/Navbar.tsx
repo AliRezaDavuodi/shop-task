@@ -6,9 +6,16 @@ import userProfile from "../../assets/images/userProfile.webp";
 import Input from "../Input/Input";
 import { NavbarSchemaType } from "../../@types/components/Navbar";
 import { NavbarSchema } from "./NavbarDate";
+import { useDispatch } from "react-redux";
+import { ModalActions } from "../../store/modal";
 
 const Navbar = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  const showModalHandler = () => {
+    dispatch(ModalActions.showModal());
+  };
 
   // find the correct route
   const selectedNav =
@@ -68,7 +75,7 @@ const Navbar = () => {
               </div>
               <div className="flex items-center justify-center w-11 h-11">
                 <div
-                  onClick={() => {}}
+                  onClick={showModalHandler}
                   className="w-8 h-8 overflow-hidden border rounded-full cursor-pointer profile border-darkerGray"
                 >
                   <img
