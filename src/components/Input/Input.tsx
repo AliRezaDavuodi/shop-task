@@ -12,6 +12,7 @@ const Input: FC<InputProps> = (props) => {
     extraContainerClass,
     extraInputClass,
     extraLabelClass,
+    extraInputContainerClass,
   } = props;
 
   const [focused, setFocused] = useState(false);
@@ -25,18 +26,20 @@ const Input: FC<InputProps> = (props) => {
 
   return (
     <div className={`flex flex-col mt-6 ${extraContainerClass}`}>
-      <label
-        htmlFor={name}
-        className={`text-blackish font-medium select-none duration-150 ${extraLabelClass} ${
-          focused ? "ml-2" : " "
-        }`}
-      >
-        {label}
-      </label>
+      {label && (
+        <label
+          htmlFor={name}
+          className={`text-blackish font-medium select-none duration-150 ${extraLabelClass} ${
+            focused ? "ml-2" : " "
+          }`}
+        >
+          {label}
+        </label>
+      )}
       <div
         className={`flex items-center justify-between mt-1 overflow-hidden border rounded-xl duration-150 ${
           focused ? "border-blackish" : "border-grayish"
-        }`}
+        } ${extraInputContainerClass}`}
       >
         <input
           type={type}
