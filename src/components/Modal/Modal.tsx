@@ -35,6 +35,10 @@ const Backdrop = () => {
 };
 
 const Overlay = () => {
+  const dispatch = useDispatch();
+
+  const hideModalHandler = () => dispatch(ModalActions.hideModal());
+
   const showModal = useSelector((state: RootState) => state.modal.show);
   return (
     <div
@@ -64,6 +68,7 @@ const Overlay = () => {
 
       <Link
         to={"/login"}
+        onClick={hideModalHandler}
         className="flex items-center gap-4 px-8 py-1.5 font-semibold capitalize"
       >
         <div className="">
