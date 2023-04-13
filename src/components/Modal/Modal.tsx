@@ -3,16 +3,44 @@ import FlagIcon from "../../assets/icons/Flag";
 import CallIcon from "../../assets/icons/Call";
 import OffIcon from "../../assets/icons/Off";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { ModalActions } from "../../store/modal";
+import { useEffect } from "react";
 
 const Backdrop = () => {
+  const dispatch = useDispatch();
+
+  const showModal = useSelector((state: any) => state.modal.show);
+
+  const hideModalHandler = () => dispatch(ModalActions.hideModal());
+
+  useEffect(() => {
+    if (showModal) {
+      window.scrollTo(0, 0);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflowY = "unset";
+    }
+  }, [showModal]);
+
   return (
-    <div className="fixed top-0 left-0 z-20 w-full h-screen overflow-hidden bg-black/70" />
+    <div
+      onClick={hideModalHandler}
+      className={`fixed top-0 left-0 w-full h-full overflow-hidden animate-showUp z-20 bg-black/70 ${
+        showModal ? "opacity-100" : "opacity-0 -z-20"
+      }`}
+    />
   );
 };
 
 const Overlay = () => {
+  const showModal = useSelector((state: any) => state.modal.show);
   return (
-    <div className="absolute bottom-0 z-30 flex flex-col justify-center w-full duration-300 bg-white rounded-t-2xl min-h-56 animate-up">
+    <div
+      className={`absolute flex flex-col justify-center w-full duration-300 bg-white rounded-t-2xl min-h-56  ${
+        showModal ? "animate-up z-30 bottom-0" : "-bottom-full -z-30"
+      }`}
+    >
       <Link
         to={""}
         className="flex items-center gap-4 px-8 py-1.5 font-semibold capitalize border-b border-b-grayish"

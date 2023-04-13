@@ -5,11 +5,11 @@ const INITIAL__STATE = {
 };
 
 const Modal = createSlice({
-  name: "auth",
+  name: "modal",
   initialState: INITIAL__STATE,
   reducers: {
     showModal(state) {
-      state.show = false;
+      state.show = true;
     },
     hideModal(state) {
       state.show = false;
