@@ -11,9 +11,10 @@ module.exports = {
       },
 
       spacing: {
-        "9/16": "56.25%",
-        "3/4": "75%",
         "1/1": "100%",
+        "9/16": "56.25%",
+        "3/5": "66%",
+        "3/4": "75%",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
@@ -88,16 +89,36 @@ module.exports = {
       },
       animation: {
         float: "float 3s ease-in-out infinite",
-        up: "up 1s ease-in-out",
+        up: "up .5s ease-in-out",
+        moveLeft: "moveLeft .5s ease-in-out",
+        moveRight: "moveRight .5s ease-in-out",
+        showUp: "showUp .5s ease-in-out",
+        hide: "hide 0.3s ease-in-out",
       },
       keyframes: {
         float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-5%)" },
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(-5%)" },
         },
         up: {
           "0%": { bottom: "-100%" },
-          "50%": { bottom: "0" },
+          "100%": { bottom: "0" },
+        },
+        moveLeft: {
+          "0%": { left: "66%" },
+          "100%": { left: "2rem" },
+        },
+        moveRight: {
+          "0%": { left: "2rem" },
+          "100%": { left: "66%" },
+        },
+        showUp: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        hide: {
+          "0%": { opacity: "100" },
+          "100%": { opacity: "0" },
         },
       },
       zIndex: {
