@@ -1,10 +1,9 @@
-import React from "react";
 import Card from "../../components/Card/Card";
 import Button from "../../components/Buttons/Button";
 
 const Cart = () => {
   return (
-    <div className="h-screen bg-white">
+    <div className="bg-white ">
       <div className="container p-3.5 pt-20">
         <Card layout="row" addAble />
         <Card layout="row" addAble />
