@@ -3,9 +3,10 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import Modal from "../components/Modal/Modal";
 import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
 export const Root = () => {
-  const showModal = useSelector((state: any) => state.modal.show);
+  const showModal = useSelector((state: RootState) => state.modal.show);
 
   const [isShowModal, setIsShowModal] = useState(false);
 

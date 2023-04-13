@@ -6,11 +6,12 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ModalActions } from "../../store/modal";
 import { useEffect } from "react";
+import { RootState } from "../../store/store";
 
 const Backdrop = () => {
   const dispatch = useDispatch();
 
-  const showModal = useSelector((state: any) => state.modal.show);
+  const showModal = useSelector((state: RootState) => state.modal.show);
 
   const hideModalHandler = () => dispatch(ModalActions.hideModal());
 
@@ -34,7 +35,7 @@ const Backdrop = () => {
 };
 
 const Overlay = () => {
-  const showModal = useSelector((state: any) => state.modal.show);
+  const showModal = useSelector((state: RootState) => state.modal.show);
   return (
     <div
       className={`absolute flex flex-col justify-center w-full duration-300 bg-white rounded-t-2xl min-h-56  ${
