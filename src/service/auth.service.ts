@@ -12,3 +12,7 @@ export const login = async (username: string, password: string) => {
   }
   return response.data;
 };
+
+export const logout = () => {
+  localStorage.removeItem("user");
+};

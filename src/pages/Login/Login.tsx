@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Input from "../../components/Input/Input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Buttons/Button";
 import OpenEyeIcon from "../../assets/icons/OpenEye";
 import { login } from "../../service/auth.service";
@@ -8,13 +8,17 @@ import { login } from "../../service/auth.service";
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
 
+  const navigate = useNavigate();
+
   const showPassHandler = () => setShowPass((pre) => !pre);
 
   const loginUserHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const data = await login("kminchelle", "0lelplR");
-      console.log({ data });
+
+      if (!data) return;
+      navigate("/products");
     } catch (error) {
       console.log({ error });
     }
