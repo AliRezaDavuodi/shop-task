@@ -20,7 +20,7 @@ const Card: FC<CardProps> = (props) => {
 
   if (layout === "row") {
     return (
-      <div className="w-full">
+      <div className="w-full animate-showUp">
         <div className="p-3 mb-1.5 bg-white rounded-2xl card">
           <div className="flex gap-4">
             <div className="flex-1 overflow-hidden min-w-28 card__cover rounded-xl">
@@ -84,8 +84,8 @@ const Card: FC<CardProps> = (props) => {
   }
 
   return (
-    <Link to={"/products/" + id} className="w-full">
-      <div className="p-1 bg-white rounded-2xl card">
+    <Link to={"/products/" + id} className="w-full animate-showUp">
+      <div className="p-1 px-2 bg-white rounded-2xl card">
         <div className="h-48 overflow-hidden card__cover rounded-xl">
           <img
             src={image}
@@ -103,7 +103,7 @@ const Card: FC<CardProps> = (props) => {
             {desc}
           </p>
 
-          <div className="flex items-center gap-1 mt-3.5 mb-2.5 text-sm">
+          <div className="flex items-center gap-1 mt-3.5 mb-2.5 text-sm px-1">
             <div className="star">
               <StarIcon />
             </div>

@@ -90,8 +90,8 @@ module.exports = {
       animation: {
         float: "float 3s ease-in-out infinite",
         up: "up .5s ease-in-out",
-        moveLeft: "moveLeft .5s ease-in-out",
-        moveRight: "moveRight .5s ease-in-out",
+        moveLeft: "moveLeft .35s ease-in-out",
+        moveRight: "moveRight .3s ease-in-out",
         showUp: "showUp .5s ease-in-out",
         hide: "hide 0.3s ease-in-out",
       },
