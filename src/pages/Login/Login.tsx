@@ -4,11 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Buttons/Button";
 import OpenEyeIcon from "../../assets/icons/OpenEye";
 import { login } from "../../service/auth.service";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store/auth";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const showPassHandler = () => setShowPass((pre) => !pre);
 
@@ -18,6 +22,9 @@ const Login = () => {
       const data = await login("kminchelle", "0lelplR");
 
       if (!data) return;
+
+      dispatch(authActions.login(data.token));
+
       navigate("/products");
     } catch (error) {
       console.log({ error });

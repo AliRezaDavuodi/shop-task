@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL__STATE = {
   token: "",
-  expiresIn: 0,
 };
 
 const authentication = createSlice({
@@ -11,7 +10,7 @@ const authentication = createSlice({
   reducers: {
     login(state, action) {
       // save information
-      state.token = action.payload.token;
+      state.token = action.payload;
 
       // save token to the local storage
       localStorage.setItem("token", state.token);

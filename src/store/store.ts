@@ -1,13 +1,13 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-// import cart from "./cart";
+import cart from "./cart";
 import authentication from "./auth";
 import singleProduct from "./singleProduct";
 import modal from "./modal";
 import products from "./products";
 
 const rootReducer = combineReducers({
-  // cart: cart,
+  cart: cart,
   info: singleProduct,
   auth: authentication,
   modal: modal,
