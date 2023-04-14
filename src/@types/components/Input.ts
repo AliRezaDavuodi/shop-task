@@ -9,4 +9,5 @@ export interface InputProps {
   extraContainerClass?: string;
   children?: React.ReactElement;
   extraInputContainerClass?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
