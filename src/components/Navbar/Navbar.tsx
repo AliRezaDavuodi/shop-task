@@ -8,14 +8,57 @@ import { NavbarSchemaType } from "../../@types/components/Navbar";
 import { NavbarSchema } from "./NavbarDate";
 import { useDispatch } from "react-redux";
 import { ModalActions } from "../../store/modal";
+import { useEffect, useState } from "react";
+import { productsType } from "../../@types/service/products";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import { ProductsActions } from "../../store/products";
+
+let timer: any;
 
 const Navbar = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
+  const products = useSelector((state: RootState) => state.products.products);
+
+  const [searchValue, setSearchValue] = useState("");
+
+  // show modal
   const showModalHandler = () => {
     dispatch(ModalActions.showModal());
   };
+
+  // get the value of the search bar
+  const searchProductsHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value.trim());
+  };
+
+  // here we will have correct value in search bar
+  useEffect(() => {
+    clearTimeout(timer);
+    setTimeout(() => {
+      const result = products.filter((item) => {
+        // selected the items that includes the text the we searched
+        if (
+          item.title
+            .toLocaleLowerCase()
+            .includes(searchValue.toLocaleLowerCase()) ||
+          item.description
+            .toLocaleLowerCase()
+            .includes(searchValue.toLocaleLowerCase())
+        )
+          return true;
+
+        return false;
+      });
+
+      // update in store
+      dispatch(ProductsActions.setFilterProduct(result));
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [searchValue]);
 
   // find the correct route
   const selectedNav =
@@ -37,6 +80,7 @@ const Navbar = () => {
         <div className="flex items-center justify-center gap-5 px-2 mr-auto">
           {selectedNav.searchPage ? (
             <Input
+              onChange={searchProductsHandler}
               id="search"
               name="search"
               placeholder="Search"
