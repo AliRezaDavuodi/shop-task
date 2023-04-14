@@ -13,6 +13,7 @@ const Input: FC<InputProps> = (props) => {
     extraInputClass,
     extraLabelClass,
     extraInputContainerClass,
+    onChange,
   } = props;
 
   const [focused, setFocused] = useState(false);
@@ -49,6 +50,7 @@ const Input: FC<InputProps> = (props) => {
           className={`outline-none bg-transparent w-full p-4 duration-150 ${extraInputClass}`}
           onFocus={activeFocus}
           onBlur={inActiveFocus}
+          onChange={onChange}
         />
         {children}
       </div>
