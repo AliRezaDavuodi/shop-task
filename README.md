@@ -41,4 +41,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## About App
 
-# Simple shop project developed by AliReza Davuodi using React.js and Tailwind CSS frameworks libraries as a test project for RAYAN NEGIN company.
+# Simple shop project developed by AliReza Davuodi using React.js and Tailwind CSS frameworks as a test project for RAYAN NEGIN company.
