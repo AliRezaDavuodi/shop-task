@@ -60,7 +60,10 @@ const Login = () => {
           id="pass"
           placeholder="Enter your password"
         >
-          <div className="pr-4 cursor-pointer" onClick={showPassHandler}>
+          <div
+            className="absolute top-1/2 -translate-y-1/2 right-5 cursor-pointer"
+            onClick={showPassHandler}
+          >
             <OpenEyeIcon />
           </div>
         </Input>

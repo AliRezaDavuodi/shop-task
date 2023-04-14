@@ -123,7 +123,7 @@ const Navbar = () => {
               <div className={`cursor-pointer relative`}>
                 <Link to={"/cart"}>
                   <CartIcon />
-                  <div className="w-4 h-4 rounded-full bg-red-600 absolute top-0 left-1/2 flex items-center justify-center text-white text-xs -translate-x-1/2 z-50 p-2">
+                  <div className="w-4 h-4 rounded-full bg-[#FF565D] absolute top-0 left-1/2 flex items-center justify-center text-white text-xs -translate-x-1/2 z-50 p-2">
                     {basketCount || 0}
                   </div>
                 </Link>

@@ -38,7 +38,7 @@ const Input: FC<InputProps> = (props) => {
         </label>
       )}
       <div
-        className={`flex items-center justify-between mt-1 overflow-hidden border rounded-xl duration-150 ${
+        className={`flex items-center justify-between relative mt-1 overflow-hidden border rounded-xl duration-150 ${
           focused ? "border-blackish" : "border-grayish"
         } ${extraInputContainerClass}`}
       >
