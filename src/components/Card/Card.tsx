@@ -86,7 +86,7 @@ const Card: FC<CardProps> = (props) => {
   return (
     <Link to={"/products/" + id} className="w-full">
       <div className="p-1 bg-white rounded-2xl card">
-        <div className="h-48 overflow-hidden card__cover rounded-xl bg-grayish">
+        <div className="h-48 overflow-hidden card__cover rounded-xl">
           <img
             src={image}
             alt="cover"

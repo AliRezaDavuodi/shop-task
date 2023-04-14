@@ -10,7 +10,7 @@ const Products = () => {
   const status = useSelector((state: RootState) => state.products.status);
 
   return (
-    <div className="container animate-showUp h-min overflow-hidden flex flex-col items-center justify-center gap-3 p-2.5 pt-20">
+    <div className="container animate-showUp bg-grayish overflow-hidden flex flex-col items-center justify-center gap-3 p-2.5 pt-20">
       {status.success &&
         products.map((item) => (
           <Card
