@@ -2,11 +2,12 @@ import reactDom from "react-dom";
 import FlagIcon from "../../assets/icons/Flag";
 import CallIcon from "../../assets/icons/Call";
 import OffIcon from "../../assets/icons/Off";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ModalActions } from "../../store/modal";
 import { useEffect } from "react";
 import { RootState } from "../../store/store";
+import { logout } from "../../service/auth.service";
 
 const Backdrop = () => {
   const dispatch = useDispatch();
@@ -36,8 +37,13 @@ const Backdrop = () => {
 
 const Overlay = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const hideModalHandler = () => dispatch(ModalActions.hideModal());
+  const logoutHandler = () => {
+    logout();
+    dispatch(ModalActions.hideModal());
+    navigate("/login");
+  };
 
   const showModal = useSelector((state: RootState) => state.modal.show);
   return (
@@ -66,16 +72,15 @@ const Overlay = () => {
         <div className="">contact us</div>
       </Link>
 
-      <Link
-        to={"/login"}
-        onClick={hideModalHandler}
+      <div
+        onClick={logoutHandler}
         className="flex items-center gap-4 px-8 py-1.5 font-semibold capitalize"
       >
         <div className="">
           <OffIcon />
         </div>
         <div className="">log out</div>
-      </Link>
+      </div>
 
       <div className="absolute w-24 h-1 -translate-x-1/2 rounded-full bg-darkerGray top-2 left-1/2" />
     </div>
