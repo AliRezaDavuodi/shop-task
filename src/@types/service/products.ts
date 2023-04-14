@@ -10,4 +10,9 @@ export interface productsType {
   stock: number;
   thumbnail: string;
   title: string;
+  amount?: number;
+}
+
+export interface getProductsType {
+  products: productsType[];
 }
