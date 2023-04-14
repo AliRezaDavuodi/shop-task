@@ -7,6 +7,11 @@ const INITIAL__STATE = {
     title: null,
     description: null,
   },
+  status: {
+    err: false,
+    pending: false,
+    success: false,
+  },
 };
 
 const foodDetail = createSlice({
@@ -19,6 +24,9 @@ const foodDetail = createSlice({
       state.info.id = id;
       state.info.image = image;
       state.info.title = title;
+    },
+    changeStatus(state, action) {
+      state.status = action.payload;
     },
   },
 });

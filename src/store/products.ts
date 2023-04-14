@@ -4,6 +4,11 @@ import { productsType } from "../@types/service/products";
 const INITIAL__STATE = {
   products: [] as productsType[],
   filterProducts: [] as productsType[],
+  status: {
+    err: false,
+    pending: false,
+    success: false,
+  },
 };
 
 const Products = createSlice({
@@ -18,6 +23,10 @@ const Products = createSlice({
 
     setFilterProduct(state, action) {
       state.filterProducts = action.payload;
+    },
+
+    changeStatus(state, action) {
+      state.status = action.payload;
     },
   },
 });

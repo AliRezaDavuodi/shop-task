@@ -16,14 +16,45 @@ function App() {
 
   useEffect(() => {
     const getAllProducts = async () => {
+      dispatch(
+        ProductsActions.changeStatus({
+          err: false,
+          pending: true,
+          success: false,
+        })
+      );
       try {
         const data = await getProducts();
 
-        if (!data) return;
+        if (!data) {
+          dispatch(
+            ProductsActions.changeStatus({
+              err: true,
+              pending: false,
+              success: false,
+            })
+          );
+          return;
+        }
 
         dispatch(ProductsActions.replaceCartInfo(data));
+
+        dispatch(
+          ProductsActions.changeStatus({
+            err: false,
+            pending: false,
+            success: true,
+          })
+        );
       } catch (error) {
         console.log({ error });
+        dispatch(
+          ProductsActions.changeStatus({
+            err: true,
+            pending: false,
+            success: false,
+          })
+        );
       }
     };
     // check if the user logged in

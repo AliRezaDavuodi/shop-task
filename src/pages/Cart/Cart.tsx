@@ -26,8 +26,8 @@ const Cart = () => {
   }, [cart]);
 
   return (
-    <div className="bg-white ">
-      <div className="container p-3.5 pt-20">
+    <div className="bg-white">
+      <div className="container animate-showUp p-3.5 pt-20">
         {cart.map((item) => (
           <Card
             layout="row"

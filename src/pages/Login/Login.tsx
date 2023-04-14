@@ -32,7 +32,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-screen gap-2 p-6 bg-white">
+    <div className="flex flex-col items-center justify-center w-full animate-showUp h-screen gap-2 p-6 bg-white">
       <h1 className="text-4xl font-extrabold text-center capitalize text-blackish font-Poppins">
         Login to site
       </h1>
