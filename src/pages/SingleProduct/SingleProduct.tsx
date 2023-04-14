@@ -4,11 +4,27 @@ import Button from "../../components/Buttons/Button";
 import { useEffect, useState } from "react";
 import { getSingleProduct } from "../../service/user.service";
 import { productsType } from "../../@types/service/products";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../store/cart";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const SingleProduct = () => {
   const { id } = useParams();
 
+  const dispatch = useDispatch();
+
   const [product, setProduct] = useState<productsType>();
+  const [amountInCart, setAmountInCart] = useState(0);
+
+  const cart = useSelector((state: RootState) => state.cart.basket);
+
+  useEffect(() => {
+    if (id)
+      setAmountInCart(
+        () => cart.find((item) => item.id === (+id as number))?.amount || 0
+      );
+  }, [cart, id]);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -25,6 +41,17 @@ const SingleProduct = () => {
 
     getProduct();
   }, []);
+
+  const addToCartHandler = () => {
+    dispatch(cartActions.addItemToCart(product));
+  };
+
+  const increaseAmountHandler = () => {
+    dispatch(cartActions.increaseItem(product));
+  };
+  const decreaseAmountHandler = () => {
+    dispatch(cartActions.decreaseItem(product));
+  };
 
   return (
     <div className="container p-3.5 pt-20">
@@ -54,15 +81,21 @@ const SingleProduct = () => {
 
         <div className="flex items-center justify-between mt-4 actions">
           <div className="flex items-center gap-2.5 actions__btn">
-            <div className="flex items-center justify-center duration-150 border rounded-full cursor-pointer w-7 h-7 border-grayish hover:border-blackish hover:text-blackish add">
+            <div
+              onClick={decreaseAmountHandler}
+              className="flex items-center justify-center duration-150 border rounded-full cursor-pointer w-7 h-7 border-grayish hover:border-blackish hover:text-blackish add"
+            >
               -
             </div>
-            <span className="text-base font-semibold">1</span>
-            <div className="flex items-center justify-center duration-150 border rounded-full cursor-pointer w-7 h-7 border-grayish hover:border-blackish hover:text-blackish remove">
+            <span className="text-base font-semibold">{amountInCart}</span>
+            <div
+              onClick={increaseAmountHandler}
+              className="flex items-center justify-center duration-150 border rounded-full cursor-pointer w-7 h-7 border-grayish hover:border-blackish hover:text-blackish remove"
+            >
               +
             </div>
           </div>
-          <div>
+          <div onClick={addToCartHandler}>
             <Button subject="Add to cart" extraBtnClass="px-8" />
           </div>
         </div>
