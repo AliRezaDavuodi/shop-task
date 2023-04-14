@@ -13,7 +13,7 @@ const foodDetail = createSlice({
   name: "info",
   initialState: INITIAL__STATE,
   reducers: {
-    replaceFoodInfo(state, action) {
+    replaceCartInfo(state, action) {
       const { id, description, title, image } = action.payload;
       state.info.description = description;
       state.info.id = id;
