@@ -77,14 +77,14 @@ const Navbar = () => {
   if (location.pathname === "/login") return <></>;
 
   return (
-    <nav className="fixed top-0 flex items-center justify-between w-full h-16 gap-4 px-3 py-4 bg-white border-b border-b-darkerGray">
+    <nav className="fixed top-0 flex items-center justify-between w-full h-16 gap-4 px-3 py-4 bg-white border-b border-b-darkerGray nav">
       {selectedNav.back && (
         <Link to={"/products"}>
           <BackIcon />
         </Link>
       )}
 
-      <div className={`flex items-center justify-between w-full duration-150`}>
+      <div className={`flex items-center justify-between w-full`}>
         <div className="flex items-center justify-center gap-5 px-2 mr-auto">
           {selectedNav.searchPage ? (
             <Input
