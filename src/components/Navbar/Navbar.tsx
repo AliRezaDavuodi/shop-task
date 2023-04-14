@@ -9,7 +9,6 @@ import { NavbarSchema } from "./NavbarDate";
 import { useDispatch } from "react-redux";
 import { ModalActions } from "../../store/modal";
 import { useEffect, useState } from "react";
-import { productsType } from "../../@types/service/products";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { ProductsActions } from "../../store/products";
@@ -19,6 +18,15 @@ let timer: any;
 const Navbar = () => {
   const location = useLocation();
   const dispatch = useDispatch();
+
+  const [basketCount, setBasketCount] = useState(0);
+
+  const cart = useSelector((state: RootState) => state.cart.basket);
+
+  useEffect(() => {
+    const totalCount = cart.reduce((acc, cur) => acc + (cur.amount || 1), 0);
+    setBasketCount(totalCount);
+  }, [cart]);
 
   const products = useSelector((state: RootState) => state.products.products);
 
@@ -112,9 +120,12 @@ const Navbar = () => {
                   : "animate-showUp"
               }`}
             >
-              <div className={`cursor-pointer`}>
+              <div className={`cursor-pointer relative`}>
                 <Link to={"/cart"}>
                   <CartIcon />
+                  <div className="w-4 h-4 rounded-full bg-red-600 absolute top-0 left-1/2 flex items-center justify-center text-white text-xs -translate-x-1/2 z-50 p-2">
+                    {basketCount || 0}
+                  </div>
                 </Link>
               </div>
               <div className="flex items-center justify-center w-11 h-11">

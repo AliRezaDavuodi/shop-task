@@ -25,14 +25,6 @@ const cart = createSlice({
       existsItem.amount && existsItem.amount++;
       storeCart(state.basket);
     },
-    increaseItem(state, action) {
-      // find the item
-      const item = state.basket.find((food) => food.id === action.payload.id);
-      // increase its amount by one
-      item && item.amount && item.amount++;
-
-      storeCart(state.basket);
-    },
     decreaseItem(state, action) {
       // find item
       const item = state.basket.find((food) => food.id === action.payload.id);
@@ -54,9 +46,8 @@ const cart = createSlice({
       storeCart(state.basket);
     },
     replaceCartBasket(state, action) {
-      console.log("ppp", action.payload);
+      if (!action.payload) return;
       state.basket = [...action.payload];
-      console.log("setted");
     },
   },
 });

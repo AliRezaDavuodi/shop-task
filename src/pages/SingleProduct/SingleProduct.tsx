@@ -47,7 +47,7 @@ const SingleProduct = () => {
   };
 
   const increaseAmountHandler = () => {
-    dispatch(cartActions.increaseItem(product));
+    dispatch(cartActions.addItemToCart(product));
   };
   const decreaseAmountHandler = () => {
     dispatch(cartActions.decreaseItem(product));

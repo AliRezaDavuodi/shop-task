@@ -11,9 +11,7 @@ import { cartActions } from "../store/cart";
 
 function App() {
   const dispatch = useDispatch();
-
   const token = useSelector((state: RootState) => state.auth.token);
-
   const isAuth = localStorage.getItem("token");
 
   useEffect(() => {
