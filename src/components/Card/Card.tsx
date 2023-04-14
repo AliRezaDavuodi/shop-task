@@ -23,7 +23,7 @@ const Card: FC<CardProps> = (props) => {
   const dispatch = useDispatch();
 
   const increaseAmountHandler = () => {
-    dispatch(cartActions.increaseItem(props));
+    dispatch(cartActions.addItemToCart(props));
   };
   const decreaseAmountHandler = () => {
     dispatch(cartActions.decreaseItem(props));
