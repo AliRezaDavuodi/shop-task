@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import StarIcon from "../../assets/icons/Star";
 import { Link } from "react-router-dom";
+import { cartActions } from "../../store/cart";
+import { useDispatch } from "react-redux";
 
 interface CardProps {
   layout?: "row" | "col";
@@ -11,22 +13,35 @@ interface CardProps {
   image: string;
   price?: number;
   id: number;
+  amount?: number;
 }
 
 const Card: FC<CardProps> = (props) => {
-  const { layout, addAble, desc, image, price, rank, title, id } = props;
+  const { layout, addAble, desc, image, price, rank, title, id, amount } =
+    props;
+
+  const dispatch = useDispatch();
+
+  const increaseAmountHandler = () => {
+    dispatch(cartActions.increaseItem(props));
+  };
+  const decreaseAmountHandler = () => {
+    dispatch(cartActions.decreaseItem(props));
+  };
 
   if (layout === "row") {
     return (
-      <Link to={"/products/" + id} className="w-full">
+      <div className="w-full">
         <div className="p-3 mb-1.5 bg-white rounded-2xl card">
           <div className="flex gap-4">
             <div className="flex-1 overflow-hidden min-w-28 card__cover rounded-xl">
-              <img
-                src={image}
-                alt="cover"
-                className="object-cover w-full h-full"
-              />
+              <Link to={"/products/" + id}>
+                <img
+                  src={image}
+                  alt="cover"
+                  className="object-cover w-full h-full"
+                />
+              </Link>
             </div>
             <div className="mt-2.5 card__info">
               <div className="">
@@ -54,11 +69,19 @@ const Card: FC<CardProps> = (props) => {
                 </h2>
                 {addAble && (
                   <div className="flex items-center gap-2.5 actions__btn">
-                    <div className="flex items-center justify-center duration-150 border rounded-full cursor-pointer w-7 h-7 border-grayish hover:border-blackish hover:text-blackish add">
+                    <div
+                      onClick={decreaseAmountHandler}
+                      className="flex items-center justify-center duration-150 border rounded-full cursor-pointer w-7 h-7 border-grayish hover:border-blackish hover:text-blackish add"
+                    >
                       -
                     </div>
-                    <span className="text-base font-semibold">1</span>
-                    <div className="flex items-center justify-center duration-150 border rounded-full cursor-pointer w-7 h-7 border-grayish hover:border-blackish hover:text-blackish remove">
+                    <span className="text-base font-semibold">
+                      {amount || 1}
+                    </span>
+                    <div
+                      onClick={increaseAmountHandler}
+                      className="flex items-center justify-center duration-150 border rounded-full cursor-pointer w-7 h-7 border-grayish hover:border-blackish hover:text-blackish remove"
+                    >
                       +
                     </div>
                   </div>
@@ -67,14 +90,14 @@ const Card: FC<CardProps> = (props) => {
             </div>
           </div>
         </div>
-      </Link>
+      </div>
     );
   }
 
   return (
     <Link to={"/products/" + id} className="w-full">
       <div className="p-1 bg-white rounded-2xl card">
-        <div className="overflow-hidden h-48 card__cover rounded-xl bg-grayish">
+        <div className="h-48 overflow-hidden card__cover rounded-xl bg-grayish">
           <img
             src={image}
             alt="cover"
