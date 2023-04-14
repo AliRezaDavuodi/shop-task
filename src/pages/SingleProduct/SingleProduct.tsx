@@ -1,28 +1,55 @@
+import { useParams } from "react-router-dom";
 import StarIcon from "../../assets/icons/Star";
-import ProductImage from "../../assets/images/productImage.png";
 import Button from "../../components/Buttons/Button";
+import { useEffect, useState } from "react";
+import { getSingleProduct } from "../../service/user.service";
+import { productsType } from "../../@types/service/products";
 
 const SingleProduct = () => {
+  const { id } = useParams();
+
+  const [product, setProduct] = useState<productsType>();
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const data = await getSingleProduct(id || "1");
+
+        if (!data) return;
+
+        setProduct(data);
+      } catch (error) {
+        console.log({ error });
+      }
+    };
+
+    getProduct();
+  }, []);
+
   return (
     <div className="container p-3.5 pt-20">
       <div className="overflow-hidden rounded-xl">
-        <img src={ProductImage} alt="" className="object-cover w-full h-full" />
+        <img
+          src={product?.images[0]}
+          alt=""
+          className="object-cover w-full h-full"
+        />
       </div>
       <div className="mt-2.5 card__info">
         <h2 className="flex items-center justify-between text-base ">
-          <span className="font-semibold">iPhone 9</span>
-          <span className="font-medium">$549</span>
+          <span className="font-semibold">{product?.title}</span>
+          <span className="font-medium">${product?.price}</span>
         </h2>
 
         <p className="mt-0.5 text-lighterBlackish first-letter:capitalize text-sm">
-          an apple mobile which is nothing like apple
+          {product?.description}
         </p>
 
         <div className="flex items-center gap-1 mt-3.5 mb-2.5 text-sm">
           <div className="star">
             <StarIcon />
           </div>
-          4.69
+          {product?.rating}
         </div>
 
         <div className="flex items-center justify-between mt-4 actions">
