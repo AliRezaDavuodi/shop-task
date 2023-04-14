@@ -13,7 +13,6 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       {allRoutes.map((route) => (
-        // TODO: check for the private or public
         <Route {...route} element={<route.component />} key={route.path} />
       ))}
     </Route>

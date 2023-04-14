@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { ModalActions } from "../../store/modal";
 import { useEffect } from "react";
 import { RootState } from "../../store/store";
-import { logout } from "../../service/auth.service";
 import { authActions } from "../../store/auth";
 
 const Backdrop = () => {

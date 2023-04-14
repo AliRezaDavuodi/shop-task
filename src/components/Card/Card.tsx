@@ -3,18 +3,7 @@ import StarIcon from "../../assets/icons/Star";
 import { Link } from "react-router-dom";
 import { cartActions } from "../../store/cart";
 import { useDispatch } from "react-redux";
-
-interface CardProps {
-  layout?: "row" | "col";
-  addAble?: true | false;
-  title: string;
-  desc?: string;
-  rank?: number;
-  image: string;
-  price?: number;
-  id: number;
-  amount?: number;
-}
+import { CardProps } from "../../@types/components/Card";
 
 const Card: FC<CardProps> = (props) => {
   const { layout, addAble, desc, image, price, rank, title, id, amount } =
