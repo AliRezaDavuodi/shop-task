@@ -1,10 +1,10 @@
 import axios from "axios";
 import authHeader from "./auth-header";
-import { productsType } from "../@types/service/products";
+import { getProductsType, productsType } from "../@types/service/products";
 
 const API_URL = "https://dummyjson.com/";
 
-export const getProducts: () => Promise<productsType[]> = async () => {
+export const getProducts: () => Promise<getProductsType> = async () => {
   return axios
     .get(API_URL + "products", { headers: authHeader() })
     .then((res) => res.data);
